@@ -33,9 +33,6 @@ app.use(
   })
 );
 
-// ✅ Preflight support
-app.options("*", cors());
-
 
 // MongoDB Connection
 mongoose
