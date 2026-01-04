@@ -20,18 +20,20 @@ const app = express();
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-app.use(
-  cors({
-    origin: [
-      "https://interviewiq-frontend-v2.vercel.app",
-      "https://interviewiq-frontend-v2-emlafeqw6-merins-projects-f3e21924.vercel.app",
-      "http://localhost:3000"
-    ],
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-  })
-);
+const corsOptions = {
+  origin: [
+    "https://interviewiq-frontend-vercel.vercel.app",
+    "https://interviewiq-frontend-v2.vercel.app",
+    "https://interviewiq-frontend-v2-emlafeqw6-merins-projects-f3e21924.vercel.app",
+    "http://localhost:3000"
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // ✅ REQUIRED
 
 
 
