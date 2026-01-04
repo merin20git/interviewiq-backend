@@ -21,19 +21,12 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:3001",
-      "https://interviewiq-frontend-v2.vercel.app",
-      "https://interviewiq-frontend-v2-emlafeqw6-merins-projects-f3e21924.vercel.app"
-    ],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    origin: true,   // ✅ allow all origins
+    credentials: true
   })
 );
 
-// ✅ VERY IMPORTANT (preflight)
+// ✅ REQUIRED for preflight requests
 app.options("*", cors());
 
 
