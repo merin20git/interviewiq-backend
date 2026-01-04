@@ -25,13 +25,17 @@ app.use(
       "http://localhost:3000",
       "http://localhost:3001",
       "https://interviewiq-frontend-v2.vercel.app",
-      "https://interview-iq-frontend.vercel.app"
+      "https://interviewiq-frontend-v2-emlafeqw6-merins-projects-f3e21924.vercel.app"
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
   })
 );
+
+// ✅ VERY IMPORTANT (preflight)
+app.options("*", cors());
+
 
 
 // MongoDB Connection
