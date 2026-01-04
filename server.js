@@ -16,18 +16,22 @@ const app = express();
 
 // Middleware
 // Middleware
+// Middleware
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 app.use(
   cors({
-    origin: true,   // ✅ allow all origins
-    credentials: true
+    origin: [
+      "https://interviewiq-frontend-v2.vercel.app",
+      "https://interviewiq-frontend-v2-emlafeqw6-merins-projects-f3e21924.vercel.app",
+      "http://localhost:3000"
+    ],
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
   })
 );
-
-// ✅ REQUIRED for preflight requests
-app.options("*", cors());
 
 
 
